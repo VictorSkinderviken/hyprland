@@ -1,0 +1,90 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 28,
+    "spacing": 14,
+
+    "modules-left": ["group/left", "custom/cava", "mpris"],
+    "modules-center": ["clock"],
+    "modules-right": ["custom/uptime", "pulseaudio", "network", "cpu", "memory", "tray"],
+
+    "group/left": {
+        "orientation": "horizontal",
+        "spacing": 4,
+        "modules": ["custom/gentoo", "hyprland/workspaces"]
+    },
+
+    "custom/cava": {
+     "exec": "~/.config/waybar/scripts/cava.sh",
+     "format": "{}"
+    },
+
+"hyprland/workspaces": {
+    "format": "{icon}",
+    "all-outputs": false,
+    "persistent-workspaces": {
+        "DP-3": [1, 2, 3],
+        "DP-1": [4, 5, 6]
+    },
+        "format-icons": {
+            "1": "1", "2": "2", "3": "3",
+            "4": "1", "5": "2", "6": "3"
+     }
+    },
+    "clock": {
+        "format": "  {:%H:%M}",
+        "format-alt": "  {:%A, %d %B %Y}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "  muted",
+        "format-icons": {
+            "default": ["", "", ""]
+        }
+
+    },
+
+    "network": {
+        "format-wifi": "  {signalStrength}%",
+        "format-ethernet": "  connected",
+        "format-disconnected": "  offline",
+        "tooltip-format": "{ifname} via {gwaddr}"
+    },
+
+    "cpu": {
+        "format": "  {usage}%",
+        "interval": 5
+    },
+
+    "memory": {
+        "format": "  {used:0.1f}G/{total:0.1f}G",
+        "interval": 5
+    },
+
+    "tray": {
+        "spacing": 10
+    },
+    
+    "custom/gentoo": {
+    "format": "\uf30d",
+    "tooltip": false
+    },
+
+    "mpris": {
+    "format": "{player_icon} {title} - {artist}",
+    "format-paused": "{player_icon} {title} - {artist}",
+    "player-icons": {
+        "default": "▶",
+        "spotify": ""
+    },
+    "max-length": 40
+    },
+
+    "custom/uptime": {
+    "exec": "uptime -p | sed 's/up //'",
+    "interval": 60,
+    "format": " {}"
+    }
+}
